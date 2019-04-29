@@ -2,6 +2,33 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+
+
+<%
+	String id = request.getParameter("CodAut");
+	String driverName = "com.mysql.cj.jdbc.Driver";
+	String connectionUrl = "jdbc:mysql://localhost:3306/";
+	String dbName = "dbbiblioteca?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	String userId = "root";
+	String password = "";
+	
+
+	
+	try {
+	Class.forName(driverName);
+	} catch (ClassNotFoundException e) {
+	e.printStackTrace();
+	}
+	
+	Connection connection = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+%>
+
 <!--
 Template Name: Halice
 Author: <a href="http://www.os-templates.com/">OS Templates</a>
@@ -31,8 +58,13 @@ Licence URI: http://www.os-templates.com/template-terms
       <p class="font-x1 uppercase bold">Accedi ai servizi</p>
       <footer>
         <ul class="nospace inline pushright">
-          <li><a class="btn" href="#home">Home</a></li>
+        
+          <li><a id="tohome" href="#home" class="btn">Home</a></li>
+          
+          <!-- <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>  -->
+        
           <li><a class="btn inverse" href="#">Login</a></li>	<!--  QUA CI VA IL LINK AL FILE CHIAMATO login.jsp !!!  -->
+          
         </ul>
       </footer>
     </article>
@@ -70,6 +102,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ##############################	 H	E	A	D	E	R	######################################### -->
 <!-- ################################################################################################ -->
 
+<!-- ///////////////////////////////////////	NAV BAR  ///////////////////////////////////////////// -->
 
 <div class="wrapper row1">
   <header id="header" class="hoc clear"> 
@@ -89,26 +122,29 @@ Licence URI: http://www.os-templates.com/template-terms
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
           </ul>
         </li>
-        <li><a class="drop" href="#">Dropdown</a>
+        <li><a class="drop" href="#">Lista</a>
           <ul>
-            <li><a href="#">Level 2</a></li>
-            <li><a class="drop" href="#">Level 2 + Drop</a>
-              <ul>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Level 2</a></li>
+            <li><a href="LibriPresenti.jsp">Libri</a></li>
+            <li><a href="AutoriPresenti.jsp">Autori</a></li>
+            <li><a href="CategoriePresenti.jsp">Categorie</a></li>
+           
           </ul>
         </li>
-        <li><a href="#">Link Text</a></li>
-        <li><a href="#">Link Text</a></li>
+        
+        <li><a class="drop" href="#">Nuovo</a>
+          <ul>
+            <li><a href="formTblBiblio.jsp">Libro</a></li>
+            <li><a href="formTblAutore.jsp">Autore</a></li>
+            <li><a href="formTblCategoria.jsp">Categoria</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- ################################################################################################ -->
   </header>
 </div>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
 
 <!-- ################################################################################################ -->
@@ -121,47 +157,55 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- main body -->
     <!-- ################################################################################################ -->
     <div class="center btmspace-80">
-      <h6 class="heading">Sed justo sapien donec eget massa</h6>
-      <p class="heading font-x3">Odio vestibulum id lacus vel lorem</p>
-      <p>Ullamcorper dapibus curabitur imperdiet lacus et tincidunt tristique sapien ipsum aliquam nisl a vehicula nisl nisi in sem duis ut neque eu augue vulputate.</p>
+      <h6 class="heading">Consulta il servizio online</h6>
+      <p class="heading font-x3">Scegli, ordina, ritira</p>
+      <p>Ordina in modo pratico e veloce un libro direttamente dalla biblioteca dell'istituto</p>
     </div>
+    
     <ul class="nospace group element btmspace-80">
-      <li class="one_quarter first">
-        <article><img src="images/demo/320x320.png" alt="">
+    
+    <%! int x; %>
+    <% x=40; %>
+    <% if(x>254){
+    	x=0;} %>
+      
+     <%
+		try{ 
+		connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
+		statement=connection.createStatement();
+		String sql ="SELECT TitLib,NomAut,DesLib,LinLib FROM tblbiblio INNER JOIN tblautore ON tblautore.CodAut=tblbiblio.CodAut";
+		
+		resultSet = statement.executeQuery(sql);
+		while(resultSet.next()){
+	%>
+    
+    <% x=x+40; %>
+    
+      <li class="one_quarter" style="margin-left: 12px;">
+        <article>
+        
+          <div style="height: 320px; width: 100%; background-color: rgb(255, 168, <%=x %>); font-size: 35px; text-align: center; padding: 45px 5px 10px 5px;" >
+				
+			<%=resultSet.getString("TitLib") %>
+
+          </div>
           <div class="txtwrap">
-            <h6 class="heading">Quis aliquam metus</h6>
-            <p>Tincidunt curabitur a erat ut nulla rutrum tempus vitae laoreet [&hellip;]</p>
-            <footer><a href="#">Read More</a></footer>
+            <h6 class="heading"><%=resultSet.getString("NomAut") %></h6>
+            <p><%=resultSet.getString("DesLib") %></p>
+            <footer><a href="<%=resultSet.getString("LinLib") %>">Link Libro</a></footer>
           </div>
         </article>
       </li>
-      <li class="one_quarter">
-        <article><img src="images/demo/320x320.png" alt="">
-          <div class="txtwrap">
-            <h6 class="heading">Rhoncus ut morbi</h6>
-            <p>Arcu duis interdum ullamcorper quam non porttitor etiam auctor [&hellip;]</p>
-            <footer><a href="#">Read More</a></footer>
-          </div>
-        </article>
-      </li>
-      <li class="one_quarter">
-        <article><img src="images/demo/320x320.png" alt="">
-          <div class="txtwrap">
-            <h6 class="heading">Fermentum rutrum</h6>
-            <p>Odio id posuere lectus class aptent taciti sociosqu ad litora torquent [&hellip;]</p>
-            <footer><a href="#">Read More</a></footer>
-          </div>
-        </article>
-      </li>
-      <li class="one_quarter">
-        <article><img src="images/demo/320x320.png" alt="">
-          <div class="txtwrap">
-            <h6 class="heading">Et luctus integer</h6>
-            <p>Per conubia nostra per inceptos himenaeos in molestie euismod ex [&hellip;]</p>
-            <footer><a href="#">Read More</a></footer>
-          </div>
-        </article>
-      </li>
+      
+      <% 
+			}
+			
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+		%>
+      
+    
     </ul>
     <footer class="center"><a class="btn" href="#">Nisl sollicitudin porta</a></footer>
     <!-- ################################################################################################ -->

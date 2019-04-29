@@ -1,50 +1,56 @@
-<%@page import="progetto_Biblioteca.bean.TblAutore" %>
+<%@page import="progetto_Biblioteca.bean.TblCategoria" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
 
-	boolean autorePresente=false;
-	//int CodAut=0;
-	String NomAut="";
-	String BioAut="";
-	String LinAut="";
-	TblAutore lb=new TblAutore();
-	lb=(TblAutore)request.getSession().getAttribute("Autore");
+	boolean catPresente=false;
+	//int CodCat=0;
+	String NomeCat="";
+
+	TblCategoria lb=new TblCategoria();
+	lb=(TblCategoria)request.getSession().getAttribute("Categoria");
 	if (lb != null){
 		
-		autorePresente=true;
-		//CodAut=lb.getCodAut();
-		BioAut=lb.getBioAut();
-		NomAut=lb.getNomAut();
-		LinAut=lb.getLinAut();
+		catPresente=true;
+		
+
+		//CodCat=lb.getCodCat();
+		NomeCat=lb.getNomeCat();
+		
 	}
 %>
 
 <html>
 
-	<style type='text/css'>
-			table{
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<title>Biblioteca | Nuovo Libro</title>
+</head>
+<body>
+
+<div class="bgded overlay" style="background-image: url('images/demo/backgrounds/01.png');">
+
+	<style type="text/css">
+		
+		form{
 			margin: auto;
 			width: 20%;
 			background-color: rgba(221, 73, 73,1);
 			padding: 20px;
 			border: auto;
 			height: 30%;
-			}
+			
+		}
+
+
+
 	</style>
 	
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<title>Biblioteca | Riepilogo Dati</title>
-</head>
-<body id="top">
-
-<div class="bgded overlay" style="background-image: url('images/demo/backgrounds/01.png');">
-
+	
 <!-- ///////////////////////////////////////	NAV BAR  ///////////////////////////////////////////// -->
 
 <div class="wrapper row6">
@@ -69,53 +75,64 @@
           <ul>
             <li><a href="LibriPresenti.jsp">Libri</a></li>
             <li><a href="AutoriPresenti.jsp">Autori</a></li>
-            <li><a class="drop" href="#">Level 2 + Drop</a>
-              <ul>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-              </ul>
-            </li>
+            <li><a href="CategoriePresenti.jsp">Categorie</a></li>
+           
           </ul>
         </li>
-        <li><a href="formTblBiblio.jsp">Nuovo Libro</a></li>
-        <li><a href="formTblAutore.jsp">Nuovo Autore</a></li>
+        
+        <li><a class="drop" href="#">Nuovo</a>
+          <ul>
+            <li><a href="formTblBiblio.jsp">Libro</a></li>
+            <li><a href="formTblAutore.jsp">Autore</a></li>
+            <li><a href="formTblCategoria.jsp">Categoria</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     
   </header>
 </div>
 
+
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
+	
+
+<!-- <form name="dati" action="/company_management/FirstServlet" method="POST"> -->
+
+<form name="dati" action="/progettoBiblioteca/BiblioServlet" name="categoriaform" method="POST">
 
 
+<center><h3>Inserisci i dati della categoria</h3><br>
 
-	<br><br><br>
-	<table class="newtable" style="width:50%;"><tbody><center class="heading">Il riepilogo dei dati</center><tr><td>Codice: &nbsp;</td><td>&nbsp;</td></tr><tr><td>Autore: &nbsp;</td><td><%=NomAut%>&nbsp;</td></tr><tr><td>Biografia:&nbsp;</td><td><%=BioAut%>&nbsp;</td></tr><tr><td>Link:&nbsp;</td><td><a href="<%=LinAut%>"> <%=LinAut%>&nbsp;</td></tr></tbody></table>
 
-	<br>
+   		
+  		Nome Categoria<br><input type="text" name="NomeCat" placeholder="Nome">
+  <br><br>
+  
+  
+  <input name="whatsend" value="nuovacetgoriasession" type="hidden">
 
+
+  <br><br>
+  <input type="submit" value="Inserisci"  class="inverse2">
+  <input type="reset" value="Cancella"  class="inverse2">
+  
+  
 <form method="post" action="BiblioServlet" name="Savedb">
 
-	<input type="hidden" name="whatsend" value="NewAutoredb">
+	<input type="hidden" name="whatsend" value="NewCatdb">
 	
-	<% if(autorePresente==true){ %>
+	<% if(catPresente==true){ %>
 	
-	<center><input type="submit" value="Salva" class="inverse2"></center>	<!-- Per aggiungere un nuovo bottone, devo creare una nuova form -->
+	<input type="submit" value="Aggiungi categoria in DB">		<!-- Per aggiungere un nuovo bottone, devo creare una nuova form -->
 
 	<% } %>
-	
-	<br>
-	<br>
 
 </form>
-
+		
+		
+</center>
+</form>
 </div>
-
-</body
-
-></html>
-
-
-
-
+</body>
+</html>

@@ -1,24 +1,30 @@
-<%@page import="progetto_Biblioteca.bean.TblAutore" %>
+<%@page import="progetto_Biblioteca.bean.TblBiblio" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
 
-	boolean autorePresente=false;
-	//int CodAut=0;
-	String NomAut="";
-	String BioAut="";
-	String LinAut="";
-	TblAutore lb=new TblAutore();
-	lb=(TblAutore)request.getSession().getAttribute("Autore");
+	boolean libroPresente=false;
+	//int CodDesBib=0;
+	int CodAut=0;
+	String TitLib="";
+	int CodCat=0;
+	String DesLib="";
+	String LinLib="";
+	TblBiblio lb=new TblBiblio();
+	lb=(TblBiblio)request.getSession().getAttribute("TBLBIBLIO");
 	if (lb != null){
 		
-		autorePresente=true;
-		//CodAut=lb.getCodAut();
-		BioAut=lb.getBioAut();
-		NomAut=lb.getNomAut();
-		LinAut=lb.getLinAut();
+		libroPresente=true;
+		
+	
+		//CodDesBib=lb.getCodDesBib();
+		CodAut=lb.getCodAut();
+		TitLib=lb.getTitLib();
+		CodCat=lb.getCodCat();
+		DesLib=lb.getDesLib();
+		LinLib=lb.getLinLib();
 	}
 %>
 
@@ -89,17 +95,43 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
 
-
 	<br><br><br>
-	<table class="newtable" style="width:50%;"><tbody><center class="heading">Il riepilogo dei dati</center><tr><td>Codice: &nbsp;</td><td>&nbsp;</td></tr><tr><td>Autore: &nbsp;</td><td><%=NomAut%>&nbsp;</td></tr><tr><td>Biografia:&nbsp;</td><td><%=BioAut%>&nbsp;</td></tr><tr><td>Link:&nbsp;</td><td><a href="<%=LinAut%>"> <%=LinAut%>&nbsp;</td></tr></tbody></table>
+	<table class="newtable" style="width:50%;">
+		<tbody><center class="heading">Il riepilogo dei dati</center>
+			<tr>
+				<td>Codice: &nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Autore: &nbsp;</td>
+				<td><%=CodAut%>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Autore: &nbsp;</td>
+				<td><%=CodCat%>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Titolo: &nbsp;</td>
+				<td><%=TitLib%>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Descrizione:&nbsp;</td>
+				<td><%=DesLib%>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Link:&nbsp;</td>
+				<td><a href="<%=LinLib%>"> <%=LinLib%>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
 
 	<br>
 
 <form method="post" action="BiblioServlet" name="Savedb">
 
-	<input type="hidden" name="whatsend" value="NewAutoredb">
+	<input type="hidden" name="whatsend" value="NewLibrodb">
 	
-	<% if(autorePresente==true){ %>
+	<% if(libroPresente==true){ %>
 	
 	<center><input type="submit" value="Salva" class="inverse2"></center>	<!-- Per aggiungere un nuovo bottone, devo creare una nuova form -->
 

@@ -62,35 +62,40 @@
     <nav id="mainav" class="fl_right">
       <ul class="clear">
         <li class="active"><a href="index.html">Home</a></li>
-        <li><a class="drop" href="#">Pages</a>
+        <li><a class="drop" href="#">Pagine</a>
           <ul>
-            <li><a href="pages/gallery.html">Gallery</a></li>
+            <li><a href="pages/gallery.html">Galleria</a></li>
             <li><a href="pages/full-width.html">Full Width</a></li>
             <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
             <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
           </ul>
         </li>
-        <li><a class="drop" href="#">Dropdown</a>
+        <li><a class="drop" href="#">Lista</a>
           <ul>
-            <li><a href="#">Level 2</a></li>
-            <li><a class="drop" href="#">Level 2 + Drop</a>
-              <ul>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Level 2</a></li>
+            <li><a href="LibriPresenti.jsp">Libri</a></li>
+            <li><a href="AutoriPresenti.jsp">Autori</a></li>
+            <li><a href="CategoriePresenti.jsp">Categorie</a></li>
+           
           </ul>
         </li>
-        <li><a href="#">Link Text</a></li>
-        <li><a href="#">Link Text</a></li>
+        
+        <li><a class="drop" href="#">Nuovo</a>
+          <ul>
+            <li><a href="formTblBiblio.jsp">Libro</a></li>
+            <li><a href="formTblAutore.jsp">Autore</a></li>
+            <li><a href="formTblCategoria.jsp">Categoria</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     
   </header>
 </div>
+
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
+
 
 
 <!-- <form name="dati" action="/company_management/FirstServlet" method="POST"> -->
@@ -104,12 +109,12 @@
 
 		<!--  Codice<br><input type="number" name="CodAut" placeholder="Codice" value="">   -->
   <br><br>
-  		Nome Cognome<br><input type="text" name="NomAut" placeholder="Nome" value="<%=NomAut%>">
+  		Nome Cognome<br><input type="text" name="NomAut" placeholder="Nome" value="<%=NomAut%>" STYLE="background-color: rgb(255, 211, 211);" >
   <br><br>
-  		Biografia<br><textarea type="text" name="BioAut" placeholder="Biografia" value="<%=BioAut%>"></textarea>
+  		Biografia<br><textarea type="text" name="BioAut" placeholder="Biografia" value="<%=BioAut%>" STYLE="background-color: rgb(255, 211, 211);"></textarea>
   <br><br>
   
-  		link<br><input type="text" name="LinAut" placeholder="Link" value="<%=LinAut%>">
+  		link<br><input type="text" name="LinAut" placeholder="Link" value="<%=LinAut%>" STYLE="background-color: rgb(255, 211, 211);">
   <br><br>
 
 
@@ -117,8 +122,13 @@
 
 	<input type="hidden" name="whatsend" value="nuovoautoresession">
 	
-	<input type="submit" value="Inserisci" class="inverse2">
-	<input type="reset" value="Cancella" class="inverse2">
+	<div>
+	
+		<input type="submit" value="Inserisci" class="inverse2">
+		<input type="reset" value="Cancella" class="inverse2">
+	
+	</div>
+
 		
 		
 </center>

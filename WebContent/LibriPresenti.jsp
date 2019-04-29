@@ -1,4 +1,4 @@
-<%@page import="progetto_Biblioteca.bean.TblAutore" %>
+<%@page import="progetto_Biblioteca.bean.TblBiblio" %>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -9,20 +9,26 @@
 
 <%
 
-	boolean autorePresente=false;
+	boolean libroPresente=false;
+	//int CodDesBib=0;
 	int CodAut=0;
-	String NomAut="";
-	String BioAut="";
-	String LinAut="";
-	TblAutore lb=new TblAutore();
-	lb=(TblAutore)request.getSession().getAttribute("Autore");
+	String TitLib="";
+	int CodCat=0;
+	String DesLib="";
+	String LinLib="";
+	TblBiblio lb=new TblBiblio();
+	lb=(TblBiblio)request.getSession().getAttribute("TBLBIBLIO");
 	if (lb != null){
 		
-		autorePresente=true;
-		//CodAut=lb.getCodAut();
-		BioAut=lb.getBioAut();
-		NomAut=lb.getNomAut();
-		LinAut=lb.getLinAut();
+		libroPresente=true;
+		
+	
+		//CodDesBib=lb.getCodDesBib();
+		CodAut=lb.getCodAut();
+		TitLib=lb.getTitLib();
+		CodCat=lb.getCodCat();
+		DesLib=lb.getDesLib();
+		LinLib=lb.getLinLib();
 	}
 %>
 
@@ -97,6 +103,7 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
 
+
 <%
 	String id = request.getParameter("CodAut");
 	String driverName = "com.mysql.cj.jdbc.Driver";
@@ -119,32 +126,38 @@
 %>
 
 <br>
-	<h2 align="center"><font><strong>Lista degli autori</strong></font></h2>
+	<h2 align="center"><font><strong>Lista dei libri</strong></font></h2>
 	<table align="center" cellpadding="5" cellspacing="5" border="1">
 	<tr>
+
 	
 	</tr>
 	<tr bgcolor="#A52A2A">
 	<td><b>Codice</b></td>
-	<td><b>Nome</b></td>
-	<td><b>Biografia</b></td>
+	<td><b>Autore</b></td>
+	<td><b>Titolo</b></td>
+	<td><b>Categoria</b></td>
+	<td><b>Descrizione</b></td>
 	<td><b>Link</b></td>
 	</tr>
 <%
 	try{ 
 	connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
 	statement=connection.createStatement();
-	String sql ="SELECT * FROM tblautore";
+	String sql ="(SELECT CodDesBib,NomAut,TitLib,CodCat,DesLib,LinLib FROM tblbiblio INNER JOIN tblautore ON tblautore.CodAut=tblbiblio.CodAut)";
 	
 	resultSet = statement.executeQuery(sql);
 	while(resultSet.next()){
 %>
 	<tr bgcolor="#DEB887">
 	
-	<td><%=resultSet.getString("CodAut") %></td>
-	<td><%=resultSet.getString("NomAut") %></td>
-	<td><%=resultSet.getString("BioAut") %></td>
-	<td> <a href="<%=resultSet.getString("LinAut") %>"> <%=resultSet.getString("LinAut") %></td>
+
+		<td><%=resultSet.getString("CodDesBib") %></td>
+		<td><%=resultSet.getString("NomAut") %></td>
+		<td><%=resultSet.getString("TitLib") %></td>
+		<td><%=resultSet.getString("CodCat") %></td>
+		<td><%=resultSet.getString("DesLib") %></td>
+		<td> <a href="<%=resultSet.getString("LinLib") %>"> <%=resultSet.getString("LinLib") %></td>
 	
 	</tr>
 	

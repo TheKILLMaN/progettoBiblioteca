@@ -1,4 +1,4 @@
-<%@page import="progetto_Biblioteca.bean.TblAutore" %>
+<%@page import="progetto_Biblioteca.bean.TblCategoria" %>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -9,20 +9,20 @@
 
 <%
 
-	boolean autorePresente=false;
-	int CodAut=0;
-	String NomAut="";
-	String BioAut="";
-	String LinAut="";
-	TblAutore lb=new TblAutore();
-	lb=(TblAutore)request.getSession().getAttribute("Autore");
+	boolean catPresente=false;
+	int CodCat=0;
+	String NomeCat="";
+	
+	TblCategoria lb=new TblCategoria();
+	lb=(TblCategoria)request.getSession().getAttribute("Categoria");
 	if (lb != null){
 		
-		autorePresente=true;
-		//CodAut=lb.getCodAut();
-		BioAut=lb.getBioAut();
-		NomAut=lb.getNomAut();
-		LinAut=lb.getLinAut();
+		catPresente=true;
+		
+	
+		//CodCat=lb.getCodCat();
+		NomeCat=lb.getNomeCat();
+		
 	}
 %>
 
@@ -96,9 +96,8 @@
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
-
 <%
-	String id = request.getParameter("CodAut");
+	String id = request.getParameter("CodCat");
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String connectionUrl = "jdbc:mysql://localhost:3306/";
 	String dbName = "dbbiblioteca?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -127,24 +126,20 @@
 	<tr bgcolor="#A52A2A">
 	<td><b>Codice</b></td>
 	<td><b>Nome</b></td>
-	<td><b>Biografia</b></td>
-	<td><b>Link</b></td>
 	</tr>
 <%
 	try{ 
 	connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
 	statement=connection.createStatement();
-	String sql ="SELECT * FROM tblautore";
+	String sql ="SELECT * FROM tblcat";
 	
 	resultSet = statement.executeQuery(sql);
 	while(resultSet.next()){
 %>
 	<tr bgcolor="#DEB887">
 	
-	<td><%=resultSet.getString("CodAut") %></td>
-	<td><%=resultSet.getString("NomAut") %></td>
-	<td><%=resultSet.getString("BioAut") %></td>
-	<td> <a href="<%=resultSet.getString("LinAut") %>"> <%=resultSet.getString("LinAut") %></td>
+	<td><%=resultSet.getString("CodCat") %></td>
+	<td><%=resultSet.getString("NomeCat") %></td>
 	
 	</tr>
 	

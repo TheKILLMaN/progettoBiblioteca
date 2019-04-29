@@ -11,7 +11,7 @@ public class TblBiblio implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = -2268567522696016195L;
 
-	private int CodDesBib;
+	//private int CodDesBib;
 	private int CodAut;
 	private String TitLib;
 	private int CodCat;
@@ -23,12 +23,13 @@ public class TblBiblio implements java.io.Serializable{
 	
 	
 	
-	public int getCodDesBib() {
+	/*public int getCodDesBib() {
 		return CodDesBib;
 	}
 	public void setCodDesBib(int codDesBib) {
 		CodDesBib = codDesBib;
 	}
+	*/
 	public int getCodAut() {
 		return CodAut;
 	}

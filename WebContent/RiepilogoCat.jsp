@@ -1,24 +1,24 @@
-<%@page import="progetto_Biblioteca.bean.TblAutore" %>
+<%@page import="progetto_Biblioteca.bean.TblCategoria" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
 
-	boolean autorePresente=false;
-	//int CodAut=0;
-	String NomAut="";
-	String BioAut="";
-	String LinAut="";
-	TblAutore lb=new TblAutore();
-	lb=(TblAutore)request.getSession().getAttribute("Autore");
+	boolean catPresente=false;
+	//int CodCat=0;
+	String NomeCat="";
+	
+	TblCategoria lb=new TblCategoria();
+	lb=(TblCategoria)request.getSession().getAttribute("Categoria");
 	if (lb != null){
 		
-		autorePresente=true;
-		//CodAut=lb.getCodAut();
-		BioAut=lb.getBioAut();
-		NomAut=lb.getNomAut();
-		LinAut=lb.getLinAut();
+		catPresente=true;
+		
+	
+		//CodCat=lb.getCodCat();
+		NomeCat=lb.getNomeCat();
+		
 	}
 %>
 
@@ -89,17 +89,27 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
 
-
 	<br><br><br>
-	<table class="newtable" style="width:50%;"><tbody><center class="heading">Il riepilogo dei dati</center><tr><td>Codice: &nbsp;</td><td>&nbsp;</td></tr><tr><td>Autore: &nbsp;</td><td><%=NomAut%>&nbsp;</td></tr><tr><td>Biografia:&nbsp;</td><td><%=BioAut%>&nbsp;</td></tr><tr><td>Link:&nbsp;</td><td><a href="<%=LinAut%>"> <%=LinAut%>&nbsp;</td></tr></tbody></table>
+	<table class="newtable" style="width:50%;">
+		<tbody><center class="heading">Il riepilogo dei dati</center>
+			<tr>
+				<td>Codice: &nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Nome: &nbsp;</td>
+				<td><%=NomeCat%>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
 
 	<br>
 
 <form method="post" action="BiblioServlet" name="Savedb">
 
-	<input type="hidden" name="whatsend" value="NewAutoredb">
+	<input type="hidden" name="whatsend" value="NewCatdb">
 	
-	<% if(autorePresente==true){ %>
+	<% if(catPresente==true){ %>
 	
 	<center><input type="submit" value="Salva" class="inverse2"></center>	<!-- Per aggiungere un nuovo bottone, devo creare una nuova form -->
 
