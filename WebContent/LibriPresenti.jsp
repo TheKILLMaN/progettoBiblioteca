@@ -144,7 +144,7 @@
 	try{ 
 	connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
 	statement=connection.createStatement();
-	String sql ="(SELECT CodDesBib,NomAut,TitLib,CodCat,DesLib,LinLib FROM tblbiblio INNER JOIN tblautore ON tblautore.CodAut=tblbiblio.CodAut)";
+	String sql ="(SELECT * FROM tblbiblio INNER JOIN tblautore ON tblautore.CodAut=tblbiblio.CodAut INNER JOIN tblcat on tblbiblio.CodCat=tblcat.CodCat)";
 	
 	resultSet = statement.executeQuery(sql);
 	while(resultSet.next()){
@@ -155,7 +155,7 @@
 		<td><%=resultSet.getString("CodDesBib") %></td>
 		<td><%=resultSet.getString("NomAut") %></td>
 		<td><%=resultSet.getString("TitLib") %></td>
-		<td><%=resultSet.getString("CodCat") %></td>
+		<td><%=resultSet.getString("NomeCat") %></td>
 		<td><%=resultSet.getString("DesLib") %></td>
 		<td> <a href="<%=resultSet.getString("LinLib") %>"> <%=resultSet.getString("LinLib") %></td>
 	

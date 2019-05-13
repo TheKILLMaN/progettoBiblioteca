@@ -38,6 +38,7 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html lang="">
 <head>
+<link rel="shortcut icon" href="http://icons.iconarchive.com/icons/robinweatherall/library/128/books-icon.png" type="image/x-icon">
 <title>Cobianchi.it | Biblioteca</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -148,7 +149,7 @@ Licence URI: http://www.os-templates.com/template-terms
 
 
 <!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
+<!-- #####################		P		A		G		E		##################################### -->
 <!-- ################################################################################################ -->
 
 
@@ -183,12 +184,13 @@ Licence URI: http://www.os-templates.com/template-terms
     
       <li class="one_quarter" style="margin-left: 12px;">
         <article>
-        
+        <a href="<%=resultSet.getString("LinLib") %>">
           <div style="height: 320px; width: 100%; background-color: rgb(255, 168, <%=x %>); font-size: 35px; text-align: center; padding: 45px 5px 10px 5px;" >
 				
 			<%=resultSet.getString("TitLib") %>
 
           </div>
+          </a>
           <div class="txtwrap">
             <h6 class="heading"><%=resultSet.getString("NomAut") %></h6>
             <p><%=resultSet.getString("DesLib") %></p>
@@ -354,7 +356,7 @@ Licence URI: http://www.os-templates.com/template-terms
 
 
 <!-- ################################################################################################ -->
-<!-- ##################################		F O O T E R		######################################### -->
+<!-- #######################		F 	O 	O 	T 	E 	R		##################################### -->
 <!-- ################################################################################################ -->
 
 
@@ -369,7 +371,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <nav>
         <ul class="nospace inline pushright uppercase">
           <li><a href="index.html"><i class="fa fa-lg fa-home"></i></a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="/progettoBiblioteca/Infopages/About.jsp">Chi Siamo</a></li>
           <li><a href="#">Contatti</a></li>
           <li><a href="#">Termini</a></li>
           <li><a href="#">Privacy</a></li>

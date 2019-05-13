@@ -1,0 +1,38 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.*"%>
+<%@page import="Query.Sql"%>
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="Bean.CategoriaBean"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title> Ricerca in base al genere </title>
+</head>
+<body>
+
+<form method="post" action="Servletlibro" name="RicercaGenere">
+
+	Genere: <select name="genere">
+	<% 
+		ArrayList<CategoriaBean> categoria; 
+		Sql db = new Sql();
+		categoria = db.SelezionaGenere(); 
+		
+		for(int i=0; i<categoria.size(); i++)
+		{
+			int CodCat = categoria.get(i).getCodCat();		
+			String NomeCat = categoria.get(i).getNomeCat(); 
+	%>
+	
+	<option value="<%=CodCat%>"> <%=NomeCat%> </option>
+		<%}%>
+	</select><br/><br/>
+	
+	<input type="hidden" name = "whatsend" value="RicercaGenere">
+	<input type="submit" value="Ricerca libro in base al genere"> 
+
+</form>
+	
+</body>
+</html>

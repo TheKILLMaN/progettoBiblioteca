@@ -1,0 +1,40 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.*"%>
+<%@page import="Query.Sql"%>
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="Bean.AutoreBean"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title> Ricerca in base all'autore </title>
+</head>
+<body>
+
+<form method="post" action="Servletlibro" name="autore">
+
+	Autore: <select name="autore">
+	<% 
+		ArrayList<AutoreBean> autore; 
+		Sql db = new Sql();
+		autore = db.SelezionaAutore(); 
+		
+		for(int i=0; i<autore.size(); i++)
+		{
+			String BioAut = autore.get(i).getBioAut(); 
+			String NomAut = autore.get(i).getNomAut();
+			String LinAut = autore.get(i).getLinAut();
+			int CodAut = autore.get(i).getCodAut();		
+	%>
+	
+	<option value=<%=CodAut%>> <%=NomAut%> </option>
+		<%}%>
+	</select><br/><br/>
+	
+	<input type="hidden" name = "whatsend" value="RicercaAutore">
+	<input type="submit" value="Ricerca libro in base all'autore"> 
+
+</form>
+	
+</body>
+</html>

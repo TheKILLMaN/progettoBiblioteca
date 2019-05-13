@@ -1,5 +1,9 @@
 package progetto_Biblioteca.bean;
 
+import java.util.ArrayList;
+
+//import company_management.bean.EmployeeBean;
+
 //import java.util.ArrayList;
 
 
@@ -12,12 +16,13 @@ public class TblAutore implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = -5382718847894133754L;
 
-	//private int CodAut;
+	private int CodAut;
 	private String NomAut;
 	private String BioAut;
 	private String LinAut;
 	
-	/*
+	//private ArrayList<DescrizioneBibliograficaBean> libri;
+	
 	public int getCodAut() {
 		return CodAut;
 	}
@@ -25,7 +30,7 @@ public class TblAutore implements java.io.Serializable{
 	public void setCodAut(int codAut) {
 		CodAut = codAut;
 	}
-	*/
+	
 	
 	
 	public String getNomAut() {

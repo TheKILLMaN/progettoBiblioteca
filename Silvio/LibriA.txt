@@ -1,0 +1,37 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.*"%>
+<%@page import="Query.Sql"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="Bean.DescrizioneBibliograficaBean"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title> Libri in base all'autore </title>
+</head>
+<body>
+	<table border="3px">
+	<% 
+		ArrayList<DescrizioneBibliograficaBean> libro; 
+		Sql db = new Sql();
+		libro = db.SelezionaLibriPerAutore(Integer.parseInt(request.getSession().getAttribute("autore").toString())); 
+		
+		for(int i=0; i<libro.size(); i++)
+		{
+			String DesLib = libro.get(i).getDesLib(); 
+			String LinLib = libro.get(i).getLinLib();
+			String TitLib = libro.get(i).getTitLib();
+			int CodAut = libro.get(i).getCodAut(); 
+			int CodCat = libro.get(i).getCodCat();
+			int CodDesBib = libro.get(i).getCodDesBib();		
+	%>
+	
+	<tr>
+		<td><%=CodAut%></td> 
+		<td><%=TitLib%><br/></td>
+		<td><%=DesLib%><br/></td>
+		<%}%>
+	</tr>
+	</table>
+</body>
+</html>
