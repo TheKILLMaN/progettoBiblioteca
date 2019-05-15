@@ -92,7 +92,6 @@ public class BiblioServlet extends HttpServlet{
 			String DesLib=DesLib2.replaceAll("'",rp);
 			String LinLib=LinLib2.replaceAll("'",rp);
 			
-			
 			/////////////////////////////////////////////////////////////////////////////////////////////////////
 			
 			
@@ -105,7 +104,6 @@ public class BiblioServlet extends HttpServlet{
 			biblio.setCodCat(CodCat);
 			biblio.setDesLib(DesLib);
 			biblio.setLinLib(LinLib);
-			
 			
 			ArrayList<TblBiblio> biblioDes=new ArrayList<TblBiblio>();
 			biblio.setBiblioDes(biblioDes);
@@ -178,7 +176,7 @@ public class BiblioServlet extends HttpServlet{
 			
 			//così leggiamo i dati della form TblAutore
 			
-			//int CodAut=Integer.parseInt(request.getParameter("CodAut"));
+			int CodAut=Integer.parseInt(request.getParameter("CodAut"));
 			String NomAut2=request.getParameter("NomAut");
 			String BioAut2=request.getParameter("BioAut");
 			String LinAut2=request.getParameter("LinAut");
@@ -203,7 +201,7 @@ public class BiblioServlet extends HttpServlet{
 			TblAutore autore=new TblAutore();
 			
 			
-			//autore.setCodAut(CodAut);
+			autore.setCodAut(CodAut);
 			autore.setNomAut(NomAut);
 			autore.setBioAut(BioAut);
 			autore.setLinAut(LinAut);
@@ -228,7 +226,7 @@ public class BiblioServlet extends HttpServlet{
 			
 			
 			//Stampa dati in console Eclipse
-			//System.out.println(CodAut);
+			System.out.println(CodAut);
 			System.out.println(NomAut);
 			System.out.println(BioAut);
 			System.out.println(LinAut);
@@ -368,6 +366,70 @@ public class BiblioServlet extends HttpServlet{
 			}
 			
 		//###################################################################################################//
+		
+		
+		// ################################# 	RICERCA TITOLO IN SESSIONE   ##################################//
+		
+				else if (whatsend.equals("RicercaTitolo")){
+					
+					
+					//così leggiamo i dati della form TblAutore
+					
+					//int CodCat=Integer.parseInt(request.getParameter("CodCat"));
+					String TitLib2=request.getParameter("TitLib");
+					
+					
+					
+					
+					///////////	 SOSTITUZIONE APOSTROFI!!!	/////////////////////////////////////////////////////////
+					// Per funzionare ogni singolo apostrofo deve essere raddoppiato! ////////////////////////////////
+					
+					
+					String rp = "''";									// Valore con sui si sostituisce, cioè doppi apostrofi
+					String TitLib=TitLib2.replaceAll("'",rp);			// La funzione rimpiazza ogni apostrofo singolo, con quelli doppi
+
+					
+					
+					/////////////////////////////////////////////////////////////////////////////////////////////////////
+					
+					
+					
+					TblBiblio biblio=new TblBiblio();
+					
+					
+					//autore.setCodAut(CodAut);
+					biblio.setTitLib(TitLib);
+					
+					
+					/*ArrayList<TblAutore> Bioaut=new ArrayList<TblAutore>();
+					autore.setBioAut(BioAut);
+					*/
+					
+					
+					request.getSession().removeAttribute("TBLBIBLIO");
+					request.getSession().setAttribute("TBLBIBLIO",biblio);
+					
+					
+					ServletContext sc=request.getSession().getServletContext();
+					RequestDispatcher rd=sc.getRequestDispatcher("/LibriT.jsp");
+					rd.forward(request, response);
+					
+					
+					//Stampa dati in console Eclipse
+					//System.out.println(CodAut);
+					System.out.println(TitLib);
+					
+					//Pagina Web Responsive che mostra i dati
+					PrintWriter out= response.getWriter();
+					
+					out.println("<!DOCTYPE html><html><head><title>Riepilogo dati utente</title></head><body>");
+					out.println("<style type='text/css'>table{margin: auto;width: 20%;background-color: #fc5c65;padding: 20px;border: auto;height: 30%;font-family: fantasy;}</style>");
+					out.println("<br><center>	Codice: "+TitLib+"</center><br><br><br><table><tbody><center>Il riepilogo dei dati</center><tr><td>Autore: &nbsp;</td><td>"+TitLib+"&nbsp;</td></tr></tbody></table>");
+					out.println("</body></html>");
+					
+					
+				}
+		
 		
 	}
 	

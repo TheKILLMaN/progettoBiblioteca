@@ -123,6 +123,16 @@ Licence URI: http://www.os-templates.com/template-terms
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
           </ul>
         </li>
+        
+        <li><a class="drop" href="#">Ricerca</a>
+          <ul>
+            <li><a href="Autore.jsp">Per Autore</a></li>
+            <li><a href="Genere.jsp">Per Genere</a></li>
+            <li><a href="Titolo.jsp">Per Titolo</a></li>
+           
+          </ul>
+        </li>
+        
         <li><a class="drop" href="#">Lista</a>
           <ul>
             <li><a href="LibriPresenti.jsp">Libri</a></li>
@@ -174,7 +184,7 @@ Licence URI: http://www.os-templates.com/template-terms
 		try{ 
 		connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
 		statement=connection.createStatement();
-		String sql ="SELECT TitLib,NomAut,DesLib,LinLib FROM tblbiblio INNER JOIN tblautore ON tblautore.CodAut=tblbiblio.CodAut";
+		String sql ="SELECT TitLib,NomAut,DesLib,LinLib FROM tblbiblio INNER JOIN tblautore ON tblautore.CodAut=tblbiblio.CodAut WHERE tblbiblio.CodDesBib IN ('1','2','3','4') ";
 		
 		resultSet = statement.executeQuery(sql);
 		while(resultSet.next()){

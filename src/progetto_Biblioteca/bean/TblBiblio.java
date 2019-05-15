@@ -22,8 +22,8 @@ public class TblBiblio implements java.io.Serializable{
 	private ArrayList<TblBiblio> BiblioDes;
 	
 	
-	
-	/*public int getCodDesBib() {
+	/*
+	public int getCodDesBib() {
 		return CodDesBib;
 	}
 	public void setCodDesBib(int codDesBib) {

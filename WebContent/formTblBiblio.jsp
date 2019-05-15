@@ -107,6 +107,16 @@
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
           </ul>
         </li>
+        
+        <li><a class="drop" href="#">Ricerca</a>
+          <ul>
+            <li><a href="Autore.jsp">Per Autore</a></li>
+            <li><a href="Genere.jsp">Per Genere</a></li>
+            <li><a href="Titolo.jsp">Per Titolo</a></li>
+           
+          </ul>
+        </li>
+        
         <li><a class="drop" href="#">Lista</a>
           <ul>
             <li><a href="LibriPresenti.jsp">Libri</a></li>
@@ -231,7 +241,7 @@
 	
 	<% if(libroPresente==true){ %>
 	
-	<input type="submit" value="Aggiungi libro in DB">		<!-- Per aggiungere un nuovo bottone, devo creare una nuova form -->
+	<!--  <input type="submit" value="Aggiungi libro in DB"> -->		<!-- Per aggiungere un nuovo bottone, devo creare una nuova form -->
 
 	<% } %>
 

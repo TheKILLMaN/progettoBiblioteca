@@ -1,36 +1,13 @@
-<%@page import="progetto_Biblioteca.bean.TblAutore" %>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.*"%>
+<%@page import="Query.Sql"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="Bean.DescrizioneBibliograficaBean"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<%
-
-	boolean autorePresente=false;
-	int CodAut=0;
-	String NomAut="";
-	String BioAut="";
-	String LinAut="";
-	TblAutore lb=new TblAutore();
-	lb=(TblAutore)request.getSession().getAttribute("Autore");
-	if (lb != null){
-		
-		autorePresente=true;
-		//CodAut=lb.getCodAut();
-		BioAut=lb.getBioAut();
-		NomAut=lb.getNomAut();
-		LinAut=lb.getLinAut();
-	}
-%>
-
-
-
 <html>
 
-	<style type='text/css'>
+
+<style type='text/css'>
 			table{
 			margin: auto;
 			width: 20%;
@@ -40,19 +17,19 @@
 			height: 30%;
 			}
 	</style>
-	
-<head>
 
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<title>Biblioteca | Autori</title>
-
+<title>Biblioteca | Rcerca per autore</title>
 </head>
+
 
 <body id="top">
 
 <div class="bgded overlay" style="background-image: url('images/demo/backgrounds/01.png');">
+
 
 <!-- ///////////////////////////////////////	NAV BAR  ///////////////////////////////////////////// -->
 
@@ -109,70 +86,45 @@
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
-
-<%
-	String id = request.getParameter("CodAut");
-	String driverName = "com.mysql.cj.jdbc.Driver";
-	String connectionUrl = "jdbc:mysql://localhost:3306/";
-	String dbName = "dbbiblioteca?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	String userId = "root";
-	String password = "";
-	
-
-	
-	try {
-	Class.forName(driverName);
-	} catch (ClassNotFoundException e) {
-	e.printStackTrace();
-	}
-	
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
-%>
-
 <br>
-	<h2 align="center"><font><strong>Lista degli autori</strong></font></h2>
-	<table align="center" cellpadding="5" cellspacing="5" border="1">
-	<tr>
-	
-	</tr>
-	<tr bgcolor="#A52A2A">
-		<td><b>Codice</b></td>
-		<td><b>Nome</b></td>
-		<td><b>Biografia</b></td>
-		<td><b>Link</b></td>
-	</tr>
-<%
-	try{ 
-	connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
-	statement=connection.createStatement();
-	String sql ="SELECT * FROM tblautore";
-	
-	resultSet = statement.executeQuery(sql);
-	while(resultSet.next()){
-%>
-	<tr bgcolor="#DEB887">
-	
-	<td><%=resultSet.getString("CodAut") %></td>
-	<td><%=resultSet.getString("NomAut") %></td>
-	<td><%=resultSet.getString("BioAut") %></td>
-	<td> <a href="<%=resultSet.getString("LinAut") %>"> <%=resultSet.getString("LinAut") %></td>
-	
-	</tr>
-	
-<% 
-	}
-	
-	} catch (Exception e) {
-	e.printStackTrace();
-	}
-%>
-</table>
+	<h2 align="center"><font><strong>Libri per Autore</strong></font></h2>
 
+	<table>
+	
+	<tr bgcolor="#A52A2A">
+		<td><b>Autore</b></td>
+		<td><b>Titolo Libro</b></td>
+		<td><b>Descrizione</b></td>
+	</tr>
+	
+	
+	<% 
+		ArrayList<DescrizioneBibliograficaBean> libro; 
+		Sql db = new Sql();
+		libro = db.SelezionaLibriPerAutore(Integer.parseInt(request.getSession().getAttribute("autore").toString())); 
+		
+		for(int i=0; i<libro.size(); i++)
+		{
+			String DesLib = libro.get(i).getDesLib();
+			
+			String NomAut=libro.get(i).getNomAut();
+			
+			String LinLib = libro.get(i).getLinLib();
+			String TitLib = libro.get(i).getTitLib();
+			int CodAut = libro.get(i).getCodAut(); 
+			int CodCat = libro.get(i).getCodCat();
+			int CodDesBib = libro.get(i).getCodDesBib();
+			
+			
+	%>
+	
+	<!--Dispongo i dati che voglio mostrare in una struttura a tabella-->
+	<tr bgcolor="yellow">
+		<td><%=NomAut%></td> 
+		<td><%=TitLib%><br/></td>
+		<td><%=DesLib%><br/></td>
+		<%}%>
+	</tr>
+	</table>
 </body>
 </html>
-
-
-
-

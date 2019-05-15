@@ -28,7 +28,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<title>Biblioteca | Nuovo Libro</title>
+<title>Biblioteca | Nuova Categoria</title>
 </head>
 <body>
 
@@ -71,6 +71,16 @@
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
           </ul>
         </li>
+        
+        <li><a class="drop" href="#">Ricerca</a>
+          <ul>
+            <li><a href="Autore.jsp">Per Autore</a></li>
+            <li><a href="Genere.jsp">Per Genere</a></li>
+            <li><a href="Titolo.jsp">Per Titolo</a></li>
+           
+          </ul>
+        </li>
+        
         <li><a class="drop" href="#">Lista</a>
           <ul>
             <li><a href="LibriPresenti.jsp">Libri</a></li>

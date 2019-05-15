@@ -6,7 +6,7 @@
 <%
 
 	boolean libroPresente=false;
-	//int CodDesBib=0;
+	int CodDesBib=0;
 	int CodAut=0;
 	String TitLib="";
 	int CodCat=0;
@@ -71,43 +71,50 @@
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
           </ul>
         </li>
+        
+        <li><a class="drop" href="#">Ricerca</a>
+          <ul>
+            <li><a href="Autore.jsp">Per Autore</a></li>
+            <li><a href="Genere.jsp">Per Genere</a></li>
+            <li><a href="Titolo.jsp">Per Titolo</a></li>
+           
+          </ul>
+        </li>
+        
         <li><a class="drop" href="#">Lista</a>
           <ul>
             <li><a href="LibriPresenti.jsp">Libri</a></li>
             <li><a href="AutoriPresenti.jsp">Autori</a></li>
-            <li><a class="drop" href="#">Level 2 + Drop</a>
-              <ul>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-                <li><a href="#">Level 3</a></li>
-              </ul>
-            </li>
+            <li><a href="CategoriePresenti.jsp">Categorie</a></li>
+           
           </ul>
         </li>
-        <li><a href="formTblBiblio.jsp">Nuovo Libro</a></li>
-        <li><a href="formTblAutore.jsp">Nuovo Autore</a></li>
+        
+        <li><a class="drop" href="#">Nuovo</a>
+          <ul>
+            <li><a href="formTblBiblio.jsp">Libro</a></li>
+            <li><a href="formTblAutore.jsp">Autore</a></li>
+            <li><a href="formTblCategoria.jsp">Categoria</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     
   </header>
 </div>
 
-<!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////   -->
 
 	<br><br><br>
 	<table class="newtable" style="width:50%;">
 		<tbody><center class="heading">Il riepilogo dei dati</center>
 			<tr>
-				<td>Codice: &nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
 				<td>Autore: &nbsp;</td>
 				<td><%=CodAut%>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>Autore: &nbsp;</td>
+				<td>Categoria: &nbsp;</td>
 				<td><%=CodCat%>&nbsp;</td>
 			</tr>
 			<tr>
