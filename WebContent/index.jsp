@@ -114,6 +114,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <nav id="mainav" class="fl_right">
       <ul class="clear">
         <li class="active"><a href="index.html">Home</a></li>
+        <!-- 
         <li><a class="drop" href="#">Pagine</a>
           <ul>
             <li><a href="pages/gallery.html">Galleria</a></li>
@@ -123,7 +124,7 @@ Licence URI: http://www.os-templates.com/template-terms
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
           </ul>
         </li>
-        
+         -->
         <li><a class="drop" href="#">Ricerca</a>
           <ul>
             <li><a href="Autore.jsp">Per Autore</a></li>
@@ -219,7 +220,8 @@ Licence URI: http://www.os-templates.com/template-terms
       
     
     </ul>
-    <footer class="center"><a class="btn" href="#">Nisl sollicitudin porta</a></footer>
+    
+    <!--  <footer class="center"><a class="btn" href="#">Nisl sollicitudin porta</a></footer> -->
     <!-- ################################################################################################ -->
     <!-- / main body -->
     <div class="clear"></div>
@@ -228,14 +230,14 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/02.png');">
+<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/02.jpeg');">
   <article class="hoc cta clear"> 
     <!-- ################################################################################################ -->
     <div class="three_quarter first">
-      <h6 class="header nospace">Risus vel mollis massa</h6>
-      <p class="nospace">Iaculis morbi ultricies ullamcorper ipsum et blandit proin fringilla pharetra</p>
+      <h6 class="header nospace">Consulta il nostro catalogo</h6>
+      <p class="nospace">Cerca il libro che fa per te</p>
     </div>
-    <footer class="one_quarter"><a class="btn" href="#">Dictum a ipsum &raquo;</a></footer>
+    <footer class="one_quarter"><a class="btn" href="LibriPresenti.jsp">Lista Completa &raquo;</a></footer>
     <!-- ################################################################################################ -->
   </article>
 </div>
@@ -246,32 +248,32 @@ Licence URI: http://www.os-templates.com/template-terms
   <section class="hoc container clear"> 
     <!-- ################################################################################################ -->
     <div class="sectiontitle center">
-      <h6 class="heading">Lectus et vehicula</h6>
-      <p>Enim ac congue libero quisque enim nisi quis</p>
+      <h6 class="heading">Social</h6>
+      <p>Seguici sulle nostre pagine</p>
     </div>
     <ul class="nospace group">
       <li class="one_quarter first">
-        <article><a href="#"><i class="icon btmspace-30 fa fa-gitlab"></i></a>
-          <h6 class="heading font-x1">Tincidunt fusce</h6>
-          <p>Donec vel nunc velit etiam interdum commodo ornare nunc sed felis odio in [&hellip;]</p>
+        <article><a href="https://www.facebook.com"><i class="icon btmspace-30 fa fa-gitlab"></i></a>
+          <h6 class="heading font-x1">Facebook</h6>
+          <p>Resta aggiornato su tutti i nostri eventi e le nostre foto [&hellip;]</p>
         </article>
       </li>
       <li class="one_quarter">
-        <article><a href="#"><i class="icon btmspace-30 fa fa-globe"></i></a>
-          <h6 class="heading font-x1">Id enim vulputate</h6>
-          <p>Et lobortis orci vitae laoreet nisi donec malesuada sed elit nec bibendum [&hellip;]</p>
+        <article><a href="https://www.instagram.com"><i class="icon btmspace-30 fa fa-globe"></i></a>
+          <h6 class="heading font-x1">Instagram</h6>
+          <p>Siamo in contatto col mondo dei giovani [&hellip;]</p>
         </article>
       </li>
       <li class="one_quarter">
-        <article><a href="#"><i class="icon btmspace-30 fa fa-tencent-weibo"></i></a>
-          <h6 class="heading font-x1">Dignissim mauris</h6>
-          <p>Nec orci sed lorem tempor dictum vitae imperdiet tellus curabitur semper [&hellip;]</p>
+        <article><a href="https://twitter.com/"><i class="icon btmspace-30 fa fa-tencent-weibo"></i></a>
+          <h6 class="heading font-x1">Twitter</h6>
+          <p>Discutiamo degli argomenti più popolari [&hellip;]</p>
         </article>
       </li>
       <li class="one_quarter">
-        <article><a href="#"><i class="icon btmspace-30 fa fa-wpexplorer"></i></a>
-          <h6 class="heading font-x1">Dapibus viverra</h6>
-          <p>Felis at massa elementum imperdiet id imperdiet ligula nulla eget hendrerit [&hellip;]</p>
+        <article><a href="https://www.youtube.com"><i class="icon btmspace-30 fa fa-wpexplorer"></i></a>
+          <h6 class="heading font-x1">YouTube</h6>
+          <p>Qui troverai le nostre video interviste [&hellip;]</p>
         </article>
       </li>
     </ul>
@@ -281,19 +283,19 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/03.png')">
+<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/03.jpg')">
   <section class="hoc container clear"> 
     <!-- ################################################################################################ -->
     <div class="sectiontitle center">
-      <h6 class="heading">Venenatis quam aenean</h6>
-      <p>Sodales blandit felis in <a href="#">venenatis facilisis</a></p>
+      <h6 class="heading">Recensioni</h6>
+      <p>Le ultime recensioni dei nostri libri</p>
     </div>
     <div class="group testimonials">
-      <article class="one_half first"><img src="images/demo/100x100.png" alt="">
+      <article class="one_half first"><img src="images/demo/avatar1.png" alt="">
         <blockquote>Fusce dignissim ex ac fermentum volutpat cras euismod vitae odio non luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus in tempor.</blockquote>
         <h6 class="heading">John D.</h6>
         <em>Finibus enim vel</em></article>
-      <article class="one_half"><img src="images/demo/100x100.png" alt="">
+      <article class="one_half"><img src="images/demo/avatar2.png" alt="">
         <blockquote>Iaculis neque at euismod proin sed luctus ex etiam mattis tortor est at mattis enim ultrices quis donec sed accumsan arcu in varius magna aenean ut lectus semper lorem ut.</blockquote>
         <h6 class="heading">Jane D.</h6>
         <em>Pretium lectus sed</em></article>
@@ -302,58 +304,56 @@ Licence URI: http://www.os-templates.com/template-terms
   </section>
 </div>
 <!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
+<!-- #####################		E		V		E		N		T		I	######################### -->
 <!-- ################################################################################################ -->
 <div class="wrapper row3">
   <div class="hoc container clear"> 
     <!-- ################################################################################################ -->
     <div class="sectiontitle center">
-      <h6 class="heading">Efficitur tincidunt dui sed</h6>
-      <p>Facilisis mi efficitur quis vestibulum ante ipsum primis in faucibus orci</p>
+      <h6 class="heading">Eventi in programma</h6>
+      <p>Anteprime, mostre e saloni organizzati dalla biblioteca</p>
     </div>
     <ul class="nospace group element">
       <li class="one_third first">
         <article>
-          <figure><img src="images/demo/320x320.png" alt="">
+          <figure><img src="images/demo/libro1.png" style="width: 90%;" alt="">
             <figcaption>
-              <time datetime="2045-04-06T08:15+00:00"><strong>06</strong> <em>Apr</em></time>
+              <time datetime="2045-04-06T08:15+00:00"><strong>06</strong> <em>Mag</em></time>
               <div><i class="fa fa-comments"></i> <a href="#">5</a></div>
             </figcaption>
           </figure>
           <div class="txtwrap">
-            <h6 class="heading">Luctus et ultrices</h6>
-            <p>Facilisis urna fusce metus velit semper sit amet iaculis non sollicitudin sit amet purus aliquam erat [&hellip;]</p>
-            <footer><a class="btn" href="#">Read More</a></footer>
+            <h6 class="heading">Tutte le poesie - Dario Bellezza</h6>
+            <p>Dario Bellezza presenterà in anteprima il suo libro nella nostra sale lunedì 6 maggio alle ore 15.30</p>
+            <!--  <footer><a class="btn" href="#">Read More</a></footer>-->
           </div>
         </article>
       </li>
       <li class="one_third">
         <article>
-          <figure><img src="images/demo/320x320.png" alt="">
+          <figure><img src="images/demo/lib2.jpg" style="width: 90%;" alt="">
             <figcaption>
-              <time datetime="2045-04-05T08:15+00:00"><strong>05</strong> <em>Apr</em></time>
+              <time datetime="2045-04-05T08:15+00:00"><strong>08</strong> <em>Mag</em></time>
               <div><i class="fa fa-comments"></i> <a href="#">5</a></div>
             </figcaption>
           </figure>
           <div class="txtwrap">
-            <h6 class="heading">Posuere cubilia curae</h6>
-            <p>Volutpat nam nec vehicula nunc sed et enim justo quisque in rhoncus ex quisque placerat felis sed [&hellip;]</p>
-            <footer><a class="btn" href="#">Read More</a></footer>
+            <h6 class="heading">Delphine de Vigan - Giorni senza fame</h6>
+            <p>Delphine de Vigan presenterà in anteprima il suo libro nella nostra sale giovedì 8 maggio alle ore 18.30</p>
           </div>
         </article>
       </li>
       <li class="one_third">
         <article>
-          <figure><img src="images/demo/320x320.png" alt="">
+          <figure><img src="images/demo/lib3.JPG" style="width: 90%;" alt="">
             <figcaption>
-              <time datetime="2045-04-04T08:15+00:00"><strong>04</strong> <em>Apr</em></time>
+              <time datetime="2045-04-04T08:15+00:00"><strong>04</strong> <em>Giu</em></time>
               <div><i class="fa fa-comments"></i> <a href="#">5</a></div>
             </figcaption>
           </figure>
           <div class="txtwrap">
-            <h6 class="heading">Habitant morbi tristique</h6>
-            <p>Nisi commodo interdum feugiat sagittis lectus in lacinia fusce sollicitudin pharetra dui ut malesuada [&hellip;]</p>
-            <footer><a class="btn" href="#">Read More</a></footer>
+            <h6 class="heading">Tom Wolfe - Un uomo vero</h6>
+            <p>Delphine de Vigan presenterà in anteprima il suo libro nella nostra sale martedì 4 giugno alle ore 18.30</p>
           </div>
         </article>
       </li>
@@ -384,7 +384,7 @@ Licence URI: http://www.os-templates.com/template-terms
           <li><a href="/progettoBiblioteca/Infopages/About.jsp">Chi Siamo</a></li>
           <li><a href="#">Contatti</a></li>
           <li><a href="#">Termini</a></li>
-          <li><a href="#">Privacy</a></li>
+          <li><a href="/progettoBiblioteca/Infopages/Privacy.jsp">Privacy</a></li>
           <li><a href="#">Cookies</a></li>
           <li><a href="#">Disclaimer</a></li>
         </ul>
@@ -399,7 +399,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <ul class="nospace btmspace-30 linklist contact">
           <li><i class="fa fa-map-marker"></i>
             <address>
-            Street Name &amp; Number, Town, Postcode/Zip
+            Piazza Martiri Di Trarego &amp; 8,  Verbania VB, 28921
             </address>
           </li>
           <li><i class="fa fa-phone"></i> +39 0323 401563</li>

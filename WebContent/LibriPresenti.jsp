@@ -180,6 +180,74 @@
 %>
 </table>
 
+
+<%--
+<table style="background-color:#fff; border:none;">
+    <ul  class="nospace group element btmspace-80">
+    
+    <tr style="background-color:#ffffff;  border:none;">
+   
+    <%! int x; %>
+    <%! int y; %>
+    <% x=40; %>
+    <% y=0; %>
+    <% if(x>254){
+    	x=0;} %>
+      
+     <%
+		try{ 
+		connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
+		statement=connection.createStatement();
+		String sql ="SELECT TitLib,NomAut,DesLib,LinLib FROM tblbiblio INNER JOIN tblautore ON tblautore.CodAut=tblbiblio.CodAut";
+		
+		resultSet = statement.executeQuery(sql);
+		while(resultSet.next()){
+	%>
+    
+    <% x=x+40; %>
+    <% y=y+1; %>
+    
+	<% if(y>4){
+		%><tr style="background-color:#ffffff;  border:none;">
+	<%} %>
+    
+    
+      <td class="one_quarter" style="margin-left: 12px; background-color:#F7F7F7;">
+        <article>
+        <a href="<%=resultSet.getString("LinLib") %>">
+          <div style="height: 320px; width: 100%; background-color: rgb(255, 168, <%=x %>); font-size: 35px; text-align: center; padding: 45px 5px 10px 5px;" >
+				
+			<%=resultSet.getString("TitLib") %>
+
+          </div>
+          </a>
+          <div class="txtwrap">
+            <h6 class="heading"><%=resultSet.getString("NomAut") %></h6>
+            <p><%=resultSet.getString("DesLib") %></p>
+            <footer><a href="<%=resultSet.getString("LinLib") %>">Link Libro</a></footer>
+          </div>
+        </article>
+        
+      </td>
+      
+      
+      <% if(y>4){
+		y=0; %></tr>
+	<%} %>
+      
+      <% 
+			}
+			
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+		%>
+      
+   </ul> 
+</table>
+--%>
+
+ 
 </body>
 </html>
 
